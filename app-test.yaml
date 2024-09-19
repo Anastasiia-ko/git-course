@@ -14,9 +14,6 @@ spec:
     namespace: codefresh
     server: https://kubernetes.default.svc
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
     syncOptions:
       - PrunePropagationPolicy=foreground
       - Replace=false
@@ -24,3 +21,5 @@ spec:
       - Validate=true
       - CreateNamespace=false
       - ApplyOutOfSyncOnly=false
+      - ServerSideApply=true
+      - RespectIgnoreDifferences=false
