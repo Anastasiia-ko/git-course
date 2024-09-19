@@ -1,28 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-test
+  name: test
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
 spec:
   project: default
   source:
     path: .
-    repoURL: https://github.com/Anastasiia-ko/codefresh-runtime-applications.git
+    repoURL: https://github.com/Anastasiia-ko/canary-rollout.git
     targetRevision: HEAD
-    directory:
-      jsonnet:
-        extVars:
-          - name: test
-            value: test
   destination:
     namespace: codefresh
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
-      prune: false
-      selfHeal: false
-      allowEmpty: false
+      prune: true
+      selfHeal: true
     syncOptions:
       - PrunePropagationPolicy=foreground
       - Replace=false
@@ -30,5 +24,3 @@ spec:
       - Validate=true
       - CreateNamespace=false
       - ApplyOutOfSyncOnly=false
-      - ServerSideApply=true
-      - RespectIgnoreDifferences=false
