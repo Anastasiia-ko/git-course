@@ -16,8 +16,8 @@ spec:
           - name: test
             value: test
   destination:
-    name: in-cluster
-    namespace: default
+    namespace: codefresh
+    server: https://kubernetes.default.svc
   syncPolicy:
     automated:
       prune: false
