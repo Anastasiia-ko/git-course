@@ -10,6 +10,11 @@ spec:
     path: .
     repoURL: https://github.com/Anastasiia-ko/codefresh-runtime-applications.git
     targetRevision: HEAD
+    directory:
+      jsonnet:
+        extVars:
+          - name: test
+            value: test
   destination:
     name: in-cluster
     namespace: default
